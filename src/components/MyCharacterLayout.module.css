@@ -1,0 +1,32 @@
+figure img {
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .2s;
+    will-change: transform;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    clip-path:
+      polygon(
+        var(--border-width) var(--border-width),
+        calc(100% - var(--border-width)) var(--border-width),
+        calc(100% - var(--border-width)) calc(100% - var(--border-width)),
+        var(--border-width) calc(100% - var(--border-width))
+      );
+  
+    /* Fix for Safari 10 */
+    flex-grow: 1;    
+  }
+
+  figure:hover img {
+    transform: scale(.993);
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+  }
+
+
+.comics-grid {
+    box-shadow: 6px 5px black;
+    border: 1px solid rgb(14, 14, 14);
+  }
