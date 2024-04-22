@@ -17,10 +17,10 @@ export default function AllCharacters() {
     
     useEffect(() => {
         async function catchMarvel() {
-            setLoading(true)
+            
             const res = await axios.get(url)
             setItem(res.data.data.results)
-            setLoading(false)
+           
         }
         
         catchMarvel()
@@ -52,7 +52,7 @@ export default function AllCharacters() {
 
     return (
         <div>
-        {loading ? <p className='text-6xl text-center'>Loading...</p> : <p></p>}
+        
         {selectedCharacter
         ? (<CharacterLayout selectedCharacter={selectedCharacter} setSelectedCharacter={setSelectedCharacter} selectCharacter={selectCharacter} />) 
         : (<div id={'start'} className='flex flex-col gap-8 items-center w-full max-w-[1400px] mx-auto'>
