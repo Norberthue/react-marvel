@@ -5,7 +5,7 @@ import CharacterLayout from './CharacterLayout';
 
 
 export default function AllCharacters() {
-    const [url, setUrl] = useState('http://gateway.marvel.com/v1/public/characters?ts=1&apikey=a6cdc8e120e252145b2f3f19094f7051&hash=33cf76d7ded0e77398da5741d2c924ac&limit=20&offset=0')
+    const [url, setUrl] = useState('https://gateway.marvel.com/v1/public/characters?ts=1&apikey=a6cdc8e120e252145b2f3f19094f7051&hash=33cf76d7ded0e77398da5741d2c924ac&limit=20&offset=0')
     const [item, setItem] = useState(null)
     const [selectedCharacter, setSelectedCharacter] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -17,10 +17,10 @@ export default function AllCharacters() {
     
     useEffect(() => {
         async function catchMarvel() {
-            
+            setLoading(true)
             const res = await axios.get(url)
             setItem(res.data.data.results)
-           
+            setLoading(false)
         }
         
         catchMarvel()
@@ -32,13 +32,13 @@ export default function AllCharacters() {
     
     async function nextCharacters() {
         setOffset(offset += 20)
-        setUrl(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=a6cdc8e120e252145b2f3f19094f7051&hash=33cf76d7ded0e77398da5741d2c924ac&limit=${limit}&offset=${offset}`)
+        setUrl(`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=a6cdc8e120e252145b2f3f19094f7051&hash=33cf76d7ded0e77398da5741d2c924ac&limit=${limit}&offset=${offset}`)
         window.location.href= '#start'
     }
 
     function prevCharacters() {
         setOffset(offset -= 20)
-        setUrl(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=a6cdc8e120e252145b2f3f19094f7051&hash=33cf76d7ded0e77398da5741d2c924ac&limit=${limit}&offset=${offset}`)
+        setUrl(`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=a6cdc8e120e252145b2f3f19094f7051&hash=33cf76d7ded0e77398da5741d2c924ac&limit=${limit}&offset=${offset}`)
         window.location.href= '#start'
     }
 
@@ -52,7 +52,7 @@ export default function AllCharacters() {
 
     return (
         <div>
-        
+        {loading ? <p className='text-6xl text-center'>Loading...</p> : <p></p>}
         {selectedCharacter
         ? (<CharacterLayout selectedCharacter={selectedCharacter} setSelectedCharacter={setSelectedCharacter} selectCharacter={selectCharacter} />) 
         : (<div id={'start'} className='flex flex-col gap-8 items-center w-full max-w-[1400px] mx-auto'>

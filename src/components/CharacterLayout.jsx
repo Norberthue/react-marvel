@@ -4,7 +4,7 @@ import styles from "./MyCharacterLayout.module.css";
 
 export default function CharacterLayout(props) {
     const {selectedCharacter, setSelectedCharacter ,selectCharacter} = props
-    const [url, setUrl] = useState(`http://gateway.marvel.com/v1/public/characters/${selectedCharacter}/comics?ts=1&apikey=a6cdc8e120e252145b2f3f19094f7051&hash=33cf76d7ded0e77398da5741d2c924ac&limit=20&offset=0`)
+    const [url, setUrl] = useState(`https://gateway.marvel.com/v1/public/characters/${selectedCharacter}/comics?ts=1&apikey=a6cdc8e120e252145b2f3f19094f7051&hash=33cf76d7ded0e77398da5741d2c924ac&limit=20&offset=0`)
     const [item, setItem] = useState(null)
     useEffect(() => {
         async function catchMarvel() {
