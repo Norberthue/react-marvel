@@ -75,7 +75,7 @@ export default function AllCharacters() {
                 
             </div>
             <div className='flex gap-10 mb-5'>
-                <button onClick={prevCharacters} className='text-white pt-2 pb-2 pl-5 pr-5 bg-red-700 rounded-xl border-[2px] border-solid border-yellow-400 buttonShadow duration-200'>Previous</button>
+                {offset >= 20 ? <button onClick={prevCharacters} className='text-white pt-2 pb-2 pl-5 pr-5 bg-red-700 rounded-xl border-[2px] border-solid border-yellow-400 buttonShadow duration-200'>Previous</button> : <p></p> }
                 <button onClick={nextCharacters} className='text-white pt-2 pb-2 pl-5 pr-5 bg-red-700 rounded-xl  border-[2px] border-solid border-yellow-400 buttonShadow duration-200'>Next</button>
             </div>
             </div>)}
